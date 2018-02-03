@@ -1,0 +1,16 @@
+subscription UpdateOnTag {
+    Tag {
+        commit(owner: $owner, name: $repository) @required {
+            sha
+            repo {
+                name
+                owner
+            }
+            pushes {
+                branch(name: $branch) @required {
+                    name
+                }
+            }
+        }
+    }
+}

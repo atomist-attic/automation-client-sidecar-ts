@@ -1,0 +1,93 @@
+{
+  "name": "@atomist/automation-client-sidecar",
+  "description": "Sidecar to automate deployment of automation client projects",
+  "version": "0.1.0",
+  "author": "Atomist",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomist/automation-client-sidecar-ts.git"
+  },
+  "homepage": "https://github.com/atomist/automation-client-sidecar-ts#readme",
+  "bugs": {
+    "url": "https://github.com/atomist/automation-client-sidecar-ts/issues"
+  },
+  "keywords": [
+    "atomist",
+    "automation"
+  ],
+  "dependencies": {
+    "@atomist/automation-client": "https://r.atomist.com/S1HVkKSmLf",
+    "@atomist/slack-messages": "^0.12.1",
+    "@octokit/rest": "^14.0.8",
+    "app-root-path": "^2.0.1",
+    "async-exit-hook": "^2.0.1",
+    "base64-js": "^1.2.1",
+    "config": "^1.28.1",
+    "copyfiles": "^1.2.0",
+    "dateformat": "^3.0.2",
+    "deepmerge": "^2.0.0",
+    "lodash": "^4.17.4",
+    "npm": "^5.6.0",
+    "npm-run-all": "^4.1.2",
+    "process-promises": "^1.0.0",
+    "promise-each": "^2.2.0",
+    "semver": "^5.4.1",
+    "shortid": "^2.2.8",
+    "stripchar": "^1.2.1",
+    "tree-kill": "^1.2.0",
+    "typescript": "^2.7.1"
+  },
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/async": "2.0.47",
+    "@types/config": "0.0.33",
+    "@types/lodash": "^4.14.100",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.0",
+    "@types/power-assert": "^1.4.29",
+    "espower-typescript": "^8.1.3",
+    "graphql-code-generator": "^0.8.13",
+    "mocha": "^5.0.0",
+    "power-assert": "^1.4.4",
+    "rimraf": "^2.6.2",
+    "supervisor": "^0.12.0",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.4.3",
+    "typescript-formatter": "^7.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "autostart": "npm-run-all --print-label --parallel watch:compile watch",
+    "autotest": "supervisor --watch src,test --extensions ts --no-restart-on exit --quiet --exec npm -- test",
+    "build": "npm-run-all lint compile test",
+    "cf:push": "sh push.sh",
+    "cf:push-staging": "sh push-staging.sh",
+    "clean": "npm-run-all clean:js clean:build",
+    "clean:build": "rimraf *-v8.log profile.txt build",
+    "clean:dist": "npm-run-all clean clean:npm",
+    "clean:js": "rimraf '{src,test}/**/*.js'",
+    "clean:npm": "rimraf node_modules",
+    "compile": "npm-run-all git:info gql:gen compile:gql compile:ts",
+    "compile:gql": "copyfiles './src/**/*.graphql' ./build",
+    "compile:ts": "tsc --project .",
+    "debug": "node $NODE_DEBUG_OPTION --trace-warnings build/src/start.client.js",
+    "fmt": "tsfmt --replace",
+    "git:info": "atomist git",
+    "gql:gen": "gql-gen --file node_modules/@atomist/automation-client/graph/schema.cortex.json --template typescript -m --out ./src/typings/types.ts './src//graphql/**/*.graphql'",
+    "lint": "tslint --format verbose --project . --exclude '{build,node_modules}/**' '**/*.ts'",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "node $NODE_DEBUG_OPTION --trace-warnings build/src/start.client.js",
+    "start:client": "atomist-client --open=true",
+    "test": "mocha --require espower-typescript/guess 'test/**/*.ts'",
+    "test:one": "mocha --compilers ts:espower-typescript/guess \"test/**/${TEST:-*.ts}\"",
+    "watch:compile": "tsc --project . --watch",
+    "watch": "supervisor --watch build --quiet --exec npm -- run start"
+  },
+  "engines": {
+    "node": "8.x.x",
+    "npm": "5.x.x"
+  }
+}

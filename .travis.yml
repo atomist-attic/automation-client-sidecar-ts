@@ -1,0 +1,31 @@
+dist: trusty
+sudo: required
+services:
+- docker
+language: node_js
+node_js:
+- 8.7.0
+branches:
+  except:
+  - "/\\+travis\\.\\d+$/"
+  - "/^\\d+\\.\\d+\\.\\d+-\\d+$/"
+env:
+  global:
+  - NPM_REGISTRY=https://atomist.jfrog.io/atomist/api/npm/npm-dev-local
+  - secure: Cb1hfhgn3dEUKdlQZpvHGrySgTEzsE2id9N2/sCZGH8Fot0nWF4iuR4BeP13Z8AauXQrXP/dXYjMGJWh2XblFJBKj0VFuWjgZn4zMBhnCbEc6WpOUDwNDs6M/XwP7FmKSiGa7U5K0khu1X0TMSBfGk/dQKTNY636pOYv5C6vbchf6PuV5idTXcZAun+XhYONm0fNYVnw2YX0RX6cxQSmE0HQxG1isKWx/A8PpV29Y7W0ZqB+UHNCCxnERZoHt37jL2wuh4aAJpovCIFQ6GictufOqVrRA2y6vD0vfwJo0TJRBkrOKiGgPLDH4+gScMio0dmfauR1gLYvppeiMg1OyFLP73X0W7KN/WVLE/sqV3XOyMNfS577uYxVvqMds2iLat9RahRK2+PzZ43nxHi8qYpaVasrI6sbi2nIYCRNXHdPYkYbdpjCibC1+rs5AMo0gXfGdyGIdgfyhD536/ENG/FlTVx9sj1iXkQXrMWjBUvQahGcjc3mW4wrNnzwNEn5hy5IkEP+cadsacEwzrNtJOTyQZAPo3JTD9R7c2dlNIAiS7eMmiwmMCFm8AgTQa/8kjUIlAbrGYqK+xtZuyDWsf5UJn3tfa7rwlS+dONkLWeMJno2aiwlb8/vJfpe90XtIRoIa7XMecCfJDLXOJ0C7twvKiMQcZrK917D559TTeM=
+  - secure: ayh0Ns+FI40GGWexe3nqJ4bc9ohuyXfDbLkygCYgepCPGAyqCRJowSBVEHS7uU9kVi0yezvBgMJpCaBEt1+R8miukn099wKHO5r73j7EqqhE5W6BgM72WixBcqVzju7KmAXYgL9gauzUdLBCpyXyDLtSTsjsjbUo4zRFrR1epw7ry/+ZszsE7mJV0FzhCCIwbW5J54WB/kMs1OokR7HRwAq0cA+zV3Z7DOLdejWNcLOO54zSP2AfTXSvBGpfCUMphf8w0njyiA9HWPcBLecsjoo1hEH7kmAnxFTUe+hj8czJt1ZnYRrtVcF+sGU09ZoEsr6Z6nxeUgx5kzUWWXvkCTnsvFOgSKsr5QRuQKRgNS9+1mjIZFq9ACShy9s6Bbtw3GcgcLxioh/N1XOYmeNXvlvWwfDD5tejSFZ9XiT3VtMPvuOJS7s+/Y2VbgbI5PLfpp7CyljCSSj5I62EIZNzb5LVpbMqlNvokXiUcIG3msmwFe2R2fzjGQh/hc1yhkfIPwulqiuBV/9IFjTtEKHj43FjtbBcm2hs+8gjI8wabM0wtSwstw+SQAv+MimiX//MdmyAuaJLIBClv9lWpZH4MeZyMGebJQ3+RtgTvGJSf53I8y3xzUpYx2LhptPmf0+7t4+QtnWcPGafmbbWdCz1YQ4G/LiKa9NP0lPj9/NJ5aA=
+  - secure: gGP1RcuBfzmzgI1//Ehl4UVA386K0iKIHYRjvxD8zGcb/kYHDH5Kcz+/98nbRlnoSxRZbiQbMhNLYxEVtodq8wufu9V4K9K4rGDvZVN777D8LWkSNvURZdfIaM6n28aWuwScqtRN0mEyKVd7l6d8CYg3qwQ62le/8dhFMteD+mRLScEj7YSKsMpVV0WpWyZfyn0tkFwu7VBJgU3CxoY3qeDUxAKfdne8SW9oFNtgUDxoSLiHLIBOg72PV4x0dWTnlBuCceMB4ArA/g+ni2p39xrhdMYu7dMqYaKrMlHsKg67iLON8IwlkdK0/4xUSieiI1BQV/UHc/W22NtpMuWMDuEyyYZYCOFi+ZrD8hqqGf5vmpztxzJXbieAlvXpx/aRvkLJe/Ua/1zBq5myLI3xevFbJFa5vFNXZJqgifbhFmF9R0H/Cb476iPECVMQVx9LM+8TtLE0+DNjk8Fuz/Dg3fMS3oEt5hMOD9Hnf9e/Br7GEq1GUFNHtkJWRkN8PHqTboE0nPxS2lCUX+7nkaL3P+1ZzvPyijI0lp152A6JoQ+YsncfbIiYuKnz0iL5JV5NW/9E6pB/R8/Gr2I3Ya5HTpmyhl2RZBK4YohQEtExcLiTy2vZN8UV+VvgcLiEYF+QcvjB7MmmTmN9EXk62FeK0BJcyTHxyHVeJQIFPwbR/As=
+script: bash scripts/travis-build.bash
+notifications:
+  email: false
+  webhooks:
+    urls:
+    - https://webhook.atomist.com/atomist/travis/teams/T095SFFBK
+    on_success: always
+    on_failure: always
+    on_start: always
+    on_cancel: always
+    on_error: always
+cache:
+  directories:
+  - "$HOME/.npm"

@@ -1,0 +1,23 @@
+{
+  // configuration that goes into atomist.config.ts
+  // this gets applied when running on eg PCF
+  "endpoints": {
+    "api": "https://automation.atomist.com/registration",
+    "graphql": "https://automation.atomist.com/graphql/team",
+    "events": "https://app.atomist.com/v1/lifecycle",
+    "intercom": "https://webhook-staging.atomist.services/atomist/teams/T1L0VDKJP/ingestion/Conversation/bc2bb58b-690e-40ac-a73d-bec4e77c0b98",
+  },
+  "groups": ["all"],
+  "teamIds": [],
+  "policy": "durable",
+  "http": {
+    "auth": {
+      "bearer": {
+        "enabled": true
+      },
+      "basic": {
+        "enabled": false
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  // configuration that goes into atomist.config.ts
+  "endpoints": {
+    "api":"https://automation-staging.atomist.services/registration",
+    "graphql": "https://automation-staging.atomist.services/graphql/team",
+    "events": "https://app-staging.atomist.services/v1/lifecycle",
+    "intercom": "https://webhook-staging.atomist.services/atomist/teams/T1L0VDKJP/ingestion/Conversation/bc2bb58b-690e-40ac-a73d-bec4e77c0b98",
+  },
+  "groups": null,
+  "teamIds": "T1L0VDKJP",
+  "policy": null,
+  "http": {
+    "auth": {
+      "bearer": {
+        "enabled": true
+      },
+      "basic": {
+        "enabled": false
+      }
+    }
+  },
+
+  // lifecycle configuration
+  "lifecycles": {
+    "push": {
+      "configuration": {
+        "emoji-style": "default",
+        "show-statuses-on-push": true,
+        "build": {
+          "style": "decorator"
+        },
+        "fingerprints": {
+          "about-hint": false,
+          "render-unchanged": true,
+          "style": "fingerprint-inline"
+        }
+      }
+    }
+  },
+  "fingerprints": {
+    "data": {
+      "deps": {
+        "name": "MavenDependencies",
+        "description": "",
+        "level": "warning",
+        "status": "success"
+      },
+      "docker": {
+        "name": "DockerfileFeature",
+        "description": "",
+        "level": "warning",
+        "status": "failure"
+      },
+      "plugins": {
+        "name": "MavenPlugins",
+        "description": "",
+        "level": "warning",
+        "status": "success"
+      },
+      "props": {
+        "name": "SpringBootApplicationProperties",
+        "description": "",
+        "level": "warning",
+        "status": "failure"
+      },
+      "rest": {
+        "name": "SpringRestMVC",
+        "description": "",
+        "level": "warning",
+        "status": "failure"
+      },
+      "travis": {
+        "name": "TravisFeature",
+        "description": "",
+        "level": "warning",
+        "status": "failure"
+      }
+    }
+  }
+}
