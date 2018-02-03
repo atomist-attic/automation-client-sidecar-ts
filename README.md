@@ -17,8 +17,9 @@ $ docker run -it --rm -e GITHUB_TOKEN=<your github token> \
 
 This will create a new automation client for every push to the repository `atomist/lifecycle-automation`. 
 
-Possible `UPDATE_POLICY` values are: `push`, `tag` and `release` given you flexibility to decide when to update your
-automation client.
+Possible `UPDATE_POLICY` values are: `push`, `tag` and `release` giving you flexibility to decide when to update your
+automation client. `tag` and/or `release` are more suited for production/stable environments; `push` is good for 
+connecting to a staging or testing environment.
 
 The `GITHUB_TOKEN` _must_ have the following scopes: 
  * `read:org` to validate your credentials to start a client for the given Atomist team
