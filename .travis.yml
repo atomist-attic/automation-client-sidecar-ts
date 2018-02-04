@@ -4,28 +4,45 @@ services:
 - docker
 language: node_js
 node_js:
-- 8.7.0
+- 9.5.0
 branches:
   except:
   - "/\\+travis\\.\\d+$/"
   - "/^\\d+\\.\\d+\\.\\d+-\\d+$/"
 env:
   global:
+  - ATOMIST_TEAM=T29E48P34
   - NPM_REGISTRY=https://atomist.jfrog.io/atomist/api/npm/npm-dev-local
-  - secure: Cb1hfhgn3dEUKdlQZpvHGrySgTEzsE2id9N2/sCZGH8Fot0nWF4iuR4BeP13Z8AauXQrXP/dXYjMGJWh2XblFJBKj0VFuWjgZn4zMBhnCbEc6WpOUDwNDs6M/XwP7FmKSiGa7U5K0khu1X0TMSBfGk/dQKTNY636pOYv5C6vbchf6PuV5idTXcZAun+XhYONm0fNYVnw2YX0RX6cxQSmE0HQxG1isKWx/A8PpV29Y7W0ZqB+UHNCCxnERZoHt37jL2wuh4aAJpovCIFQ6GictufOqVrRA2y6vD0vfwJo0TJRBkrOKiGgPLDH4+gScMio0dmfauR1gLYvppeiMg1OyFLP73X0W7KN/WVLE/sqV3XOyMNfS577uYxVvqMds2iLat9RahRK2+PzZ43nxHi8qYpaVasrI6sbi2nIYCRNXHdPYkYbdpjCibC1+rs5AMo0gXfGdyGIdgfyhD536/ENG/FlTVx9sj1iXkQXrMWjBUvQahGcjc3mW4wrNnzwNEn5hy5IkEP+cadsacEwzrNtJOTyQZAPo3JTD9R7c2dlNIAiS7eMmiwmMCFm8AgTQa/8kjUIlAbrGYqK+xtZuyDWsf5UJn3tfa7rwlS+dONkLWeMJno2aiwlb8/vJfpe90XtIRoIa7XMecCfJDLXOJ0C7twvKiMQcZrK917D559TTeM=
-  - secure: ayh0Ns+FI40GGWexe3nqJ4bc9ohuyXfDbLkygCYgepCPGAyqCRJowSBVEHS7uU9kVi0yezvBgMJpCaBEt1+R8miukn099wKHO5r73j7EqqhE5W6BgM72WixBcqVzju7KmAXYgL9gauzUdLBCpyXyDLtSTsjsjbUo4zRFrR1epw7ry/+ZszsE7mJV0FzhCCIwbW5J54WB/kMs1OokR7HRwAq0cA+zV3Z7DOLdejWNcLOO54zSP2AfTXSvBGpfCUMphf8w0njyiA9HWPcBLecsjoo1hEH7kmAnxFTUe+hj8czJt1ZnYRrtVcF+sGU09ZoEsr6Z6nxeUgx5kzUWWXvkCTnsvFOgSKsr5QRuQKRgNS9+1mjIZFq9ACShy9s6Bbtw3GcgcLxioh/N1XOYmeNXvlvWwfDD5tejSFZ9XiT3VtMPvuOJS7s+/Y2VbgbI5PLfpp7CyljCSSj5I62EIZNzb5LVpbMqlNvokXiUcIG3msmwFe2R2fzjGQh/hc1yhkfIPwulqiuBV/9IFjTtEKHj43FjtbBcm2hs+8gjI8wabM0wtSwstw+SQAv+MimiX//MdmyAuaJLIBClv9lWpZH4MeZyMGebJQ3+RtgTvGJSf53I8y3xzUpYx2LhptPmf0+7t4+QtnWcPGafmbbWdCz1YQ4G/LiKa9NP0lPj9/NJ5aA=
-  - secure: gGP1RcuBfzmzgI1//Ehl4UVA386K0iKIHYRjvxD8zGcb/kYHDH5Kcz+/98nbRlnoSxRZbiQbMhNLYxEVtodq8wufu9V4K9K4rGDvZVN777D8LWkSNvURZdfIaM6n28aWuwScqtRN0mEyKVd7l6d8CYg3qwQ62le/8dhFMteD+mRLScEj7YSKsMpVV0WpWyZfyn0tkFwu7VBJgU3CxoY3qeDUxAKfdne8SW9oFNtgUDxoSLiHLIBOg72PV4x0dWTnlBuCceMB4ArA/g+ni2p39xrhdMYu7dMqYaKrMlHsKg67iLON8IwlkdK0/4xUSieiI1BQV/UHc/W22NtpMuWMDuEyyYZYCOFi+ZrD8hqqGf5vmpztxzJXbieAlvXpx/aRvkLJe/Ua/1zBq5myLI3xevFbJFa5vFNXZJqgifbhFmF9R0H/Cb476iPECVMQVx9LM+8TtLE0+DNjk8Fuz/Dg3fMS3oEt5hMOD9Hnf9e/Br7GEq1GUFNHtkJWRkN8PHqTboE0nPxS2lCUX+7nkaL3P+1ZzvPyijI0lp152A6JoQ+YsncfbIiYuKnz0iL5JV5NW/9E6pB/R8/Gr2I3Ya5HTpmyhl2RZBK4YohQEtExcLiTy2vZN8UV+VvgcLiEYF+QcvjB7MmmTmN9EXk62FeK0BJcyTHxyHVeJQIFPwbR/As=
+  - secure: Dsp+D8rN+Br09dW3CpPChLkwvAWgMBqk4h+1Q6J508h6cL5UGZRqXIYRbmrOTNQR126URrYU8YMfR/9M66AolEUVaFhvJrktK/1RsGp1KYS7NAphvl7SlbDYr6AHYHCwM8Z62sU2Ni/YNcsrSlQeRTK1+mWYV93w+VQMdoWLoKoRT+bf8soWZIWEP8pXp/ex+ZMNGvS7elnX2CQITkSMCo876T60siGRPd7TSgadfwL7zuY5bxyFGBiG4vYBHyR4hmkr6pSMOmuWF0edxqjjg/NrMKdP+SC2uppCkftV+I9EByd7Mx9cPa0HRRogmjvhgJEZ4VLxIIzCLehmNRAlctFFPrY+RTEuOWoRhESvNT+IYjaadI1nD8/JG/12zLbJTryFW9f6JjAi/AZXN4gwqCO9MK7gMzL01+Id+j2gEIL59ThmcMPfndDdOyQvC7h4q3DH7xtsXGLmz6UzwrG6d9tOUiQ8cDGRniBMTSALtvPze8PjuJ+2BRHDMfl18Yc2QaRywpVY58KzSLKLNmAM54PiHn+PY9nL8U4uHFWRPPG3/Lq8vjlsOKsZORdJkCisH3SZNOzAWUbWBdtTEI5nQgDe0K2tgEAqTFyq8S1+Hy9WbY3Ljvx29Q+spgQn1Mqtb/PKsUZSKjcrmrwzl7fTyBVM/Ny7BewMLS/OV8LNw5o=
+  - DOCKER_REGISTRY=atomist
+  - DOCKER_USER=atomist
+  - secure: E/xxg/APOCZDT1aT2DmsGmyywqwWPv5XOhl6t//cHxpxl74zejSPKMbnYuDaxnE9MV/qaX0kTSsm2uVOU+jiw5V6Jvz6o3qvgK6F7KlRYS9beQADH7DHCvCpZt4i4GkF4nWrFFyowUBNKrISg4E0UwzIW7S0y7LmRTjPebEBwA8uQjbScDE9XDCvfapmMjUWz2dPJQSKPqlEsucmvv9LZBK2vEHTfDFrzby/Sddbm/q7eh/bITTA5lKDqF0pmKaGJfKq5H916Pf5Oy0SC7LttpfNeShhTO/ozswTDrGuLldaVVMZvlqAUEiknfFHoPlQEAoazEVKJZ6FGa+5YBAW6Mbuq+mwGlit+SohyoopJ7fvHMveib4SoG5Adx+EBCq1HzVevID6aQOgtZd0OKWsfty75Iu05k0QwKpDoa2wyNlfpe5KVXQMWlbxJV2PhTSZbPVzigvyM61w+ykj24gvZdqVDCmOksxj6sJa8begDoOSUfBTAPcLhpeYUzFzXhtaNAOij4BCypJxDntMn4NA4BwokTWiCB/iXAUZBTj3XetCss769H9AwBdVsqew4RL0AMjRDHj8i2ER5cUstkbjaXzgA4QqCbtJ0BQcRAjAg9GjEIZ5FILUlz/FGc88TJZr7UK9umyFq9nZ+KGMK8tL3aRds9unn7ewHj4VZdiPfDA=
+before_install:
+- openssl aes-256-cbc -K $encrypted_1ec4abc792fb_key -iv $encrypted_1ec4abc792fb_iv
+  -in .npmrc.enc -out .npmrc -d
 script: bash scripts/travis-build.bash
 notifications:
   email: false
   webhooks:
     urls:
-    - https://webhook.atomist.com/atomist/travis/teams/T095SFFBK
+    - https://webhook.atomist.com/atomist/travis/teams/T29E48P34
     on_success: always
     on_failure: always
     on_start: always
     on_cancel: always
     on_error: always
-cache:
-  directories:
-  - "$HOME/.npm"
+before_deploy:
+- touch build/typedoc/.nojekyll
+deploy:
+- provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: build/typedoc
+  on:
+    tags: true
+    condition: "$TRAVIS_TAG =~ ^[0-9]+\\.[0-9]+\\.[0-9]+(-(m|rc)\\.[0-9]+)?$"
+- provider: releases
+  api_key: "$GITHUB_TOKEN"
+  on:
+    tags: true
+    condition: "$TRAVIS_TAG =~ ^[0-9]+\\.[0-9]+\\.[0-9]+(-(m|rc)\\.[0-9]+)?$"
