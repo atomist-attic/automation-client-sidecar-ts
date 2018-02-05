@@ -6,9 +6,9 @@ RUN curl -s -L -O https://github.com/Yelp/dumb-init/releases/download/v$DUMB_INI
     && dpkg -i dumb-init_${DUMB_INIT_VERSION}_amd64.deb \
     && rm -f dumb-init_${DUMB_INIT_VERSION}_amd64.deb
 
-RUN mkdir -p /app
+RUN mkdir -p /opt/app
 
-WORKDIR /app
+WORKDIR /opt/app
 
 COPY . .
 
