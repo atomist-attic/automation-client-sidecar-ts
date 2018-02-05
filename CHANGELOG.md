@@ -19,4 +19,3 @@ Initial release
 
 -   Everything
 -   Docker image push
--   NPM package publish
