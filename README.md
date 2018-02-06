@@ -12,7 +12,7 @@ $ docker run -it --rm -e GITHUB_TOKEN=<your github token> \
     -e REPOSITORY=lifecycle-automation \
     -e UPDATE_POLICY=push \
     -e BRANCH=master \
-    automation-client-sidecar
+    atomist/automation-client-sidecar
 ```
 
 This will create a new automation client for every push to the repository `atomist/lifecycle-automation`. Once the new version has been started successfully, the previous version is gracefully stopped.
