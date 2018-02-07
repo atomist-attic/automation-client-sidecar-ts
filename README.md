@@ -1,13 +1,16 @@
 # @atomist/automation-client-sidecar-ts
 
-This project allows to run automation client via the deployment of a sidecar that handles build, test and deploy of the
-monitored automation client project.
+[![Build Status](https://travis-ci.org/atomist/automation-client-sidecar-ts.svg?branch=master)](https://travis-ci.org/atomist/automation-client-sidecar-ts)
+
+This project allows to run automation client via the deployment of a
+sidecar that handles build, test, and deploy of the monitored
+automation client project.
 
 ## Starting the Sidecar
 
 ```
 $ docker run -it --rm -e GITHUB_TOKEN=<your github token> \
-    -e TEAM_ID=<your atomist team id> \
+    -e ATOMIST_TEAM=<your atomist team id> \
     -e OWNER=atomisthqa \
     -e REPOSITORY=lifecycle-automation \
     -e UPDATE_POLICY=push \
@@ -15,18 +18,23 @@ $ docker run -it --rm -e GITHUB_TOKEN=<your github token> \
     atomist/automation-client-sidecar
 ```
 
-This will create a new automation client for every push to the repository `atomist/lifecycle-automation`. Once the new version has been started successfully, the previous version is gracefully stopped.
+This will create a new automation client for every push to the
+repository `atomisthqa/lifecycle-automation`. Once the new version has
+been started successfully, the previous version is gracefully stopped.
 
-Possible `UPDATE_POLICY` values are: `push`, `tag` and `release` giving you flexibility to decide when to update your
-automation client. `tag` and/or `release` are more suited for production/stable environments; `push` is good for 
-connecting to a staging or testing environment.
+Possible `UPDATE_POLICY` values are: `push`, `tag` and `release`
+giving you flexibility to decide when to update your automation
+client. `tag` and/or `release` are more suited for production/stable
+environments; `push` is good for connecting to a staging or testing
+environment.
 
-The `GITHUB_TOKEN` _must_ have the following scopes: 
- * `read:org` to validate your credentials to start a client for the given Atomist team
- * `repo` to create GitHub statuses and tags on the monitored repository
- * `gist` to upload GitHub gists for build and test logs
- * `read:user` to read your user details to create a Git tag
- * `user:email` to read your email to create a Git tag
+The `GITHUB_TOKEN` _must_ have the following scopes:
+
+*   `read:org` to validate your credentials to start a client for the given Atomist team
+*   `repo` to create GitHub statuses and tags on the monitored repository
+*   `gist` to upload GitHub gists for build and test logs
+*   `read:user` to read your user details to create a Git tag
+*   `user:email` to read your email to create a Git tag
 
 ## Support
 
@@ -36,7 +44,7 @@ at [atomist-community.slack.com][slack].
 
 If you find a problem, please create an [issue][].
 
-[issue]: https://github.com/atomist/lifecycle-automation/issues
+[issue]: https://github.com/atomist/automation-client-sidecar-ts/issues
 
 ## Contributing
 
@@ -77,17 +85,18 @@ Command | Reason
 
 ### Release
 
-To create a new release of the project, simply push a tag of the form
-`M.N.P` where `M`, `N`, and `P` are integers that form the next
-appropriate [semantic version][semver] for release.  The version in
-the package.json is replaced by the build and is totally ignored!  For
-example:
+To create a new release of the project, update the version in
+package.json and then push a tag for the version.  The version must be
+of the form `M.N.P` where `M`, `N`, and `P` are integers that form the
+next appropriate [semantic version][semver] for release.  The version
+in the package.json must be the same as the tag.  For example:
 
 [semver]: http://semver.org
 
-```
-$ git tag -a 1.2.3
-$ git push --tags
+```console
+$ npm version 1.2.3
+$ git tag -a -m 'The ABC release' 1.2.3
+$ git push origin 1.2.3
 ```
 
 The Travis CI build (see badge at the top of this page) will publish
