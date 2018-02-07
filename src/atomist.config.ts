@@ -10,6 +10,9 @@ const pj = require(`${appRoot.path}/package.json`);
 
 const token = process.env.GITHUB_TOKEN;
 
+const teamId = process.env.ATOMIST_TEAM || process.env.TEAM_ID || undefined;
+const teamIds = (teamId) ? [teamId] : [];
+
 const notLocal = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging";
 
 const events = [];
@@ -29,7 +32,7 @@ switch (UpdatePolicy.toLowerCase()) {
 export const configuration: any = {
     name: pj.name,
     version: pj.version,
-    teamIds: process.env.TEAM_ID,
+    teamIds,
     commands: [
     ],
     events,
