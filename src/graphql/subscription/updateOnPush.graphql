@@ -1,18 +1,16 @@
-subscription UpdateOnPush {
-    Push(branch: $branch) {
-        branch
-        repo(owner: $owner, name: $repository) @required {
-            name
-            owner
-            channels {
-                name
-                team {
-                    id
-                }
-            }
-        }
-        after {
-            sha
-        }
+subscription UpdateOnPush(
+  $owner: String!
+  $repository: String!
+  $branch: String!
+) {
+  Push(branch: $branch) {
+    branch
+    repo(owner: $owner, name: $repository) @required {
+      name
+      owner
     }
+    after {
+      sha
+    }
+  }
 }

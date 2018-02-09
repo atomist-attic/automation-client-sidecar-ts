@@ -145,6 +145,9 @@ export type _UserJoinedChannelOrdering = "atmTeamId_asc" | "atmTeamId_desc" | "i
 
 export namespace UpdateOnPush {
   export type Variables = {
+    owner: string;
+    repository: string;
+    branch: string;
   }
 
   export type Subscription = {
@@ -160,16 +163,6 @@ export namespace UpdateOnPush {
   export type Repo = {
     name?: string | null; 
     owner?: string | null; 
-    channels?: Channels[] | null; 
-  } 
-
-  export type Channels = {
-    name?: string | null; 
-    team?: Team | null; 
-  } 
-
-  export type Team = {
-    id?: string | null; 
   } 
 
   export type After = {
@@ -178,6 +171,9 @@ export namespace UpdateOnPush {
 }
 export namespace UpdateOnRelease {
   export type Variables = {
+    owner: string;
+    repository: string;
+    branch: string;
   }
 
   export type Subscription = {
@@ -209,6 +205,9 @@ export namespace UpdateOnRelease {
 }
 export namespace UpdateOnTag {
   export type Variables = {
+    owner: string;
+    repository: string;
+    branch: string;
   }
 
   export type Subscription = {

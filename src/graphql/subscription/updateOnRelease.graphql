@@ -1,18 +1,22 @@
-subscription UpdateOnRelease {
-    Release {
-        tag {
-            commit(owner: $owner, name: $repository) @required {
-                sha
-                repo {
-                    name
-                    owner
-                }
-                pushes {
-                    branch(name: $branch) @required {
-                        name
-                    }
-                }
-            }
+subscription UpdateOnRelease(
+  $owner: String!
+  $repository: String!
+  $branch: String!
+) {
+  Release {
+    tag {
+      commit(owner: $owner, name: $repository) @required {
+        sha
+        repo {
+          name
+          owner
         }
+        pushes {
+          branch(name: $branch) @required {
+            name
+          }
+        }
+      }
     }
+  }
 }
